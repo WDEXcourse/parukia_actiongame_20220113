@@ -5,7 +5,8 @@ using UnityEngine;
 public class PiayerMove : MonoBehaviour
 {
     public Rigidbody rb;
-    // Start is called before the first frame update
+    //private bool test;
+    // Start is called before the first frame update 
     void Start()
     {
 
@@ -33,6 +34,15 @@ public class PiayerMove : MonoBehaviour
         }
 
 
+        if (Input.GetKey(KeyCode.Space))
+           
+        {
+            rb.AddForce(0, 15, 0);
+
+               
+
+        }
+
 
 
         if (Input.GetKey(KeyCode.LeftArrow))
@@ -46,18 +56,38 @@ public class PiayerMove : MonoBehaviour
             transform.position = new Vector3(0, 4, 0);
 
         }
-
-        void OnCollisionstay(Collision hit)
+    }
+    void OnCollisionStay(Collision hit)
+    {
+        if (hit.gameObject.tag == "Enemy")
         {
-            if (hit.gameObject.tag == "Enemy")
-            {
+
+            transform.position = new Vector3(0, 4, 0);
+        }
 
 
-                transform.position = new Vector3(0, 4, 0);
 
-            }
+        if (hit.gameObject.tag == "Ground")
+        {
+
+
+
+
 
         }
+
+
+
+
+
+        if (hit.gameObject.tag == "Goal")
+        {
+
+
+
+
+        }
+
     }
 }
        
